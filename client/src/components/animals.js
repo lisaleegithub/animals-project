@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import Form from "./form";
+import Form from "./form";
 
 function Animals() {
 
@@ -21,11 +21,11 @@ function Animals() {
     }, []);
 
     
-    // const addAnimals = (newAnimal) => {
-    //     //console.log(newStudent);
-    //     //postStudent(newStudent);
-    //     setAnimals((animals) => [...animals, newAnimal]);
-    // }
+    const addAnimals = (newAnimal) => {
+        //console.log(newAnimal);
+        //postStudent(newAnimal);
+        setAnimals((animals) => [...animals, newAnimal]);
+    }
 
 
     return (
@@ -36,7 +36,7 @@ function Animals() {
                 <li key={animal.id}> {animal.common_name} {animal.scientific_name}
                 {animal.population} {animal.status_code}</li>)}
         </ul>
-        {/* <Form addAnimals={addAnimals} /> */}
+        <Form addAnimals={addAnimals} />
       </div>
     );
   }

@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+form label {
+  display: inline-block;
+  margin-top: 10px;
+  width: 100%;
+  vertical-align: top;
+}
+form input, form select {
+  display: inline-block;
+  width: 200px;
+  margin-top: 10px;
+}
