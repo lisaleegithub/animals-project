@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Form = (props) => {
+const AddSight = (props) => {
     const [sighting, setSighting] = useState({
         date: "", //date
         time: "", //time
@@ -54,30 +54,42 @@ const Form = (props) => {
         setSighting((sighting) => ({ ...sighting, recordCreationTimestamp }));
     }
 
-    // //A function to handle the post request
-    // const postStudent = (newStudent) => {
-    //     return fetch('http://localhost:5005/api/students', {
-    //     method: 'POST',
-    //     headers: {'Content-Type': 'application/json'}, 
-    //     body: JSON.stringify(newStudent)
-    //   }).then((response) => {
-    //       return response.json()
-    //   }).then((data) => {
-    //     console.log("From the post ", data);
-    //     props.addStudent(data);
+    //A function to handle the post request
+    const postSighting = (newSighting) => {
+        return fetch('http://localhost:5005/api/animals', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'}, 
+        body: JSON.stringify(newSighting)
+      }).then((response) => {
+          return response.json()
+      }).then((data) => {
+        console.log("From the post ", data);
+        // props.addStudent(data);
       
-    // });
-    // }
+    });
+    }
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     postStudent(student);
+    const handleSubmit = (e) => {
+        let emptySighting = {
+            date: "", //date
+            time: "", //time
+            individual: "", //string - dropdown?
+            location: "", // string or num format
+            isHealthy: "", //boolean but not
+            email: "", //email format
+            recordCreationTimestamp: "" //optional
+        }
+        e.preventDefault();
+        setSighting(sighting); // set usestate for the form
+        postSighting(sighting); // make the post request to the db
+        // props.addAnimals(sighting); // sent the new sighting to the parent
+        setSighting(emptySighting); // clear the fields
         
-    // };
+    };
 
     return (
-        // <form onSubmit={handleSubmit}>
-        <form>
+        <form onSubmit={handleSubmit}>
+        {/* <form> */}
             <fieldset>
                 <label>Date of the Sighting</label>
                 <input
@@ -163,4 +175,4 @@ const Form = (props) => {
     );
 };
 
-export default Form;
+export default AddSight;
