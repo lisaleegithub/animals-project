@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import Form from "./form";
+import AddSight from "./AddSight";
 
 function Animals() {
-
     const [animals, setAnimals] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5005/api/animals")
+        fetch("http://localhost:5005/animals")
         .then((response) => response.json())
         .then(animals =>{
             // setAnimals((animals[3]));
@@ -20,13 +19,12 @@ function Animals() {
         
     }, []);
 
-    
+    // to show list of animals (can't add animals)
     const addAnimals = (newAnimal) => {
         //console.log(newAnimal);
         //postStudent(newAnimal);
         setAnimals((animals) => [...animals, newAnimal]);
     }
-
 
     return (
       <div className="animals">
@@ -36,7 +34,7 @@ function Animals() {
                 <li key={animal.id}> {animal.common_name} {animal.scientific_name}
                 {animal.population} {animal.status_code}</li>)}
         </ul>
-        <Form addAnimals={addAnimals} />
+        <AddSight />
       </div>
     );
   }

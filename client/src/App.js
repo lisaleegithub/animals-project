@@ -1,5 +1,5 @@
 import './App.css';
-import Animals from './components/animals';
+import Animals from './components/Animals';
 
 function App() {
   return (
