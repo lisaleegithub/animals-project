@@ -118,8 +118,8 @@ const AddSight = (props) => {
 
                 <label>Health of the Animal</label>
                 <select value={sighting.healthy} onChange={handleHealthyChange}>
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
+                    <option value="healthy">Yes</option>
+                    <option value="not healthy">No</option>
                 </select>
 
                 <label>Email of Sighter</label>

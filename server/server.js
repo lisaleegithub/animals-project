@@ -36,16 +36,27 @@ app.get('/individuals', cors(), async (req, res) => {
     }
 });
 
-// GET request for sightings table
+// // GET request for sightings table
+// app.get('/sightings', cors(), async (req, res) => {
+//     // res.json(animals);
+//     try{
+//         const { rows: sightings } = await db.query('SELECT * FROM sightings');
+//         res.send(sightings);
+//     } catch (e){
+//         return res.status(400).json({e});
+//     }
+// });
+
+// GET request for JOINed tables (individuals and sightings)
 app.get('/sightings', cors(), async (req, res) => {
-    // res.json(animals);
     try{
-        const { rows: sightings } = await db.query('SELECT * FROM sightings');
+        const { rows: sightings } = await db.query('SELECT individuals.nickname, sightings.datetime, sightings.location, sightings.healthy FROM individuals INNER JOIN sightings ON individuals.id = sightings.individualid');
         res.send(sightings);
     } catch (e){
         return res.status(400).json({e});
     }
 });
+
 
 // POST request for sightings list
 // need to find out how to combine date & time
