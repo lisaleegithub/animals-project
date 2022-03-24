@@ -29,8 +29,9 @@ function SightingList() {
         <h2> List of Sightings </h2>
         <ul>
             {sighting.map((sighting, index) =>
-                <li key={index}> {sighting.location} {sighting.isHealthy} {sighting.email}
-                {sighting.individualsId}</li>)}
+                <li key={index}> Individuals ID : {sighting.individuals_id} <br/>
+                {sighting.location} {sighting.is_healthy} {sighting.email}
+                </li>)}
         </ul>
         <AddSight addSighting={addSighting} />
       </div>
