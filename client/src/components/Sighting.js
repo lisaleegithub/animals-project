@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import AddSight from "./AddSight";
+import SightingForm from "./SightingForm";
 
-function SightingList() {
-    const [sighting, setSighting] = useState([]);
+function Sighting() {
+    const [sightings, setSightings] = useState([]);
 
     useEffect(() => {
         fetch("http://localhost:5005/sightings")
@@ -10,18 +10,17 @@ function SightingList() {
         .then(sightings =>{
             for (let index in sightings){
                if( index !== "3"){
-                   setSighting(sightings);
+                setSightings(sightings);
                }
             };       
         })
         
     }, []);
 
-    // // to show list of sightings 
-    // const addSighting = (newSighting) => {
-    //     //console.log(newSighting);
-    //     setSighting((sightings) => [...sightings, newSighting]);
-    // }
+    // to show list of sightings after adding
+    const addSighting = (newSighting) => {
+        setSightings((sightings) => [...sightings, newSighting]);
+    }
 
     // to formate date and time
     function formatDateTime(input) {
@@ -41,12 +40,12 @@ function SightingList() {
     return (
       <div className="sightings">
         <div className="form-column">
-            <AddSight />
+            <SightingForm AddSight={addSighting}/>
         </div>
         <div className="list-column">
             <h2> List of Sightings </h2>
             <ul>
-                {sighting.map((sighting, index) =>
+                {sightings.map((sighting, index) =>
                     <li key={index}> Date{'&'}Time: {formatDateTime(sighting.datetime)} <br/> 
                     Saw{' '}{sighting.nickname}{' '}at{' '}{sighting.location}{' '}looking{' '}{boolToString(sighting.healthy)}
                     </li>)}
@@ -57,4 +56,4 @@ function SightingList() {
     );
   }
   
-  export default SightingList;
+  export default Sighting;

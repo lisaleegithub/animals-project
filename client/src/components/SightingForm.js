@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const AddSight = (props) => {
+const SightingForm = (props) => {
     const [sighting, setSighting] = useState({
         date: "", //date
         time: "", //time
@@ -43,7 +43,7 @@ const AddSight = (props) => {
 
     //A function to handle the post request
     const postSighting = (newSighting) => {
-        return fetch('http://localhost:5005/api/animals', {
+        return fetch('http://localhost:5005/animals', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'}, 
         body: JSON.stringify(newSighting)
@@ -51,7 +51,7 @@ const AddSight = (props) => {
           return response.json()
       }).then((data) => {
         console.log("From the post ", data);
-        // props.addStudent(data);
+        props.AddSight(data);
     });
     }
 
@@ -67,7 +67,7 @@ const AddSight = (props) => {
         e.preventDefault();
         setSighting(sighting); // set usestate for the form
         postSighting(sighting); // make the post request to the db
-        // props.addAnimals(sighting); // sent the new sighting to the parent
+        props.AddSight(sighting); // sent the new sighting to the parent
         setSighting(emptySighting); // clear the fields
         
     };
@@ -99,12 +99,12 @@ const AddSight = (props) => {
 
                 <label>Individual Seen</label>
                 <select value={sighting.individualid} required onChange={handleIndividualidChange}>
-                    <option value="individualid1">Individual id 1</option>
-                    <option value="individualid2">Individual id 2</option>
-                    <option value="individualid3">Individual id 3</option>
-                    <option value="individualid4">Individual id 4</option>
-                    <option value="individualid5">Individual id 5</option>
-                    <option value="individualid6">Individual id 6</option>
+                    <option value="individualid1">1</option>
+                    <option value="individualid2">2</option>
+                    <option value="individualid3">3</option>
+                    <option value="individualid4">4</option>
+                    <option value="individualid5">5</option>
+                    <option value="individualid6">6</option>
                 </select>
 
                 <label>Location of Sighting</label>
@@ -139,4 +139,4 @@ const AddSight = (props) => {
     );
 };
 
-export default AddSight;
+export default SightingForm;

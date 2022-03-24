@@ -1,11 +1,11 @@
 import './App.css';
-import SightingList from './components/SightingList';
+import Sighting from './components/Sighting';
 
 function App() {
   return (
     <div className="App">
       <h1>Endangered Animals Sighting Tracker</h1>
-      <SightingList />
+      <Sighting />
     </div>
   );
 }
