@@ -54,20 +54,19 @@ app.post('/sightings', cors(), async (req, res) => {
         date: req.body.date, 
         time: req.body.time, 
         location: req.body.location, 
-        isHealthy: req.body.isHealthy, 
+        healthy: req.body.healthy, 
         email: req.body.email, 
-        individualsId: req.body.individualsId
+        individualid: req.body.individualsId
     }
 
-    // console.log("this is the post", [newSighting.date, newSighting.time, newSighting.location, newSighting.isHealthy, newSighting.email, newSighting.recordCreationTimestamp ]);
     const datetime = new Date().toISOString();
     const creationTime = new Date().toISOString();
     const result = await db.query(
         // INSERT INTO needs to match db
         // individuals_id should be individual_id ideally
-        'INSERT INTO sightings (date_time, location, is_healthy, email, individuals_id, record_creation_timestamp) VALUES($1, $2, $3, $4, $5, $6) RETURNING *',
+        'INSERT INTO sightings (date_time, location, healthy, email, individualid, record_creation_timestamp) VALUES($1, $2, $3, $4, $5, $6) RETURNING *',
         // [datetime, "California", true, "sighting@sighting.com", 1, creationTime]
-        [datetime, newSighting.location, newSighting.isHealthy, newSighting.email, newSighting.individualsId, creationTime]
+        [datetime, newSighting.location, newSighting.healthy, newSighting.email, newSighting.individualid, creationTime]
     );
     console.log(result);
     res.json(result);

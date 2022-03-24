@@ -4,19 +4,11 @@ const AddSight = (props) => {
     const [sighting, setSighting] = useState({
         date: "", //date
         time: "", //time
-        individual: "", //string - dropdown?
+        individualid: "", //string - dropdown?
         location: "", // string or num format
-        isHealthy: "", //boolean but not
+        healthy: "", //boolean but not
         email: "", //email format
-        recordCreationTimestamp: "" //optional
     });
-
-    // // maybe handle inputs together?
-    // const handleChange = (event) => {
-    //     const name = event.target.name;
-    //     const value = event.target.value;
-    //     setInputs(values => ({...values, [name]: value}))
-    //   }
 
     //create functions that handle the event of the user typing into the form
     const handleDateChange = (event) => {
@@ -29,9 +21,9 @@ const AddSight = (props) => {
         setSighting((sighting) => ({ ...sighting, time }));
     }
 
-    const handleIndividualChange = (event) => {
-        const individual = event.target.value;
-        setSighting((sighting) => ({ ...sighting, individual }));
+    const handleIndividualidChange = (event) => {
+        const individualid = event.target.value;
+        setSighting((sighting) => ({ ...sighting, individualid }));
     }
 
     const handleLocationChange = (event) => {
@@ -39,19 +31,14 @@ const AddSight = (props) => {
         setSighting((sighting) => ({ ...sighting, location }));
     }
 
-    const handleIsHealthyChange = (event) => {
-        const isHealthy = event.target.value;
-        setSighting((sighting) => ({ ...sighting, isHealthy }));
+    const handleHealthyChange = (event) => {
+        const healthy = event.target.value;
+        setSighting((sighting) => ({ ...sighting, healthy }));
     }
 
     const handleEmailChange = (event) => {
         const email = event.target.value;
         setSighting((sighting) => ({ ...sighting, email }));
-    }
-
-    const handleTimestampChange = (event) => {
-        const recordCreationTimestamp = event.target.value;
-        setSighting((sighting) => ({ ...sighting, recordCreationTimestamp }));
     }
 
     //A function to handle the post request
@@ -65,7 +52,6 @@ const AddSight = (props) => {
       }).then((data) => {
         console.log("From the post ", data);
         // props.addStudent(data);
-      
     });
     }
 
@@ -73,11 +59,10 @@ const AddSight = (props) => {
         let emptySighting = {
             date: "", //date
             time: "", //time
-            individual: "", //string - dropdown?
+            individualid: "", //string - dropdown?
             location: "", // string or num format
-            isHealthy: "", //boolean but not
+            healthy: "", //boolean but not
             email: "", //email format
-            recordCreationTimestamp: "" //optional
         }
         e.preventDefault();
         setSighting(sighting); // set usestate for the form
@@ -112,19 +97,14 @@ const AddSight = (props) => {
                 />
 
                 <label>Individual Seen</label>
-                <select value={sighting.individual} required onChange={handleIndividualChange}>
-                    <option value="individualName1">Name1</option>
-                    <option value="individualName2">Name2</option>
-                    <option value="individualName3">Name3</option>
+                <select value={sighting.individualid} required onChange={handleIndividualidChange}>
+                    <option value="individualid1">Individual id 1</option>
+                    <option value="individualid2">Individual id 2</option>
+                    <option value="individualid3">Individual id 3</option>
+                    <option value="individualid4">Individual id 4</option>
+                    <option value="individualid5">Individual id 5</option>
+                    <option value="individualid6">Individual id 6</option>
                 </select>
-                {/* <input
-                    type="text"
-                    id="add-user-name"
-                    placeholder="First Name"
-                    required
-                    value={student.name}
-                    onChange={handleNameChange}
-                /> */}
 
                 <label>Location of Sighting</label>
                 <input
@@ -137,18 +117,10 @@ const AddSight = (props) => {
                 />
 
                 <label>Health of the Animal</label>
-                <select value={sighting.isHealthy} onChange={handleIsHealthyChange}>
-                    <option value="healthy">Healthy</option>
-                    <option value="notHealthy">Not Healthy</option>
+                <select value={sighting.healthy} onChange={handleHealthyChange}>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
                 </select>
-                {/* <input
-                    type="text"
-                    id="add-user-name"
-                    placeholder="First Name"
-                    required
-                    value={sighting.isHealthy}
-                    onChange={handleIsHealthyChange}
-                /> */}
 
                 <label>Email of Sighter</label>
                 <input
@@ -160,15 +132,6 @@ const AddSight = (props) => {
                     onChange={handleEmailChange}
                 />
 
-                {/* need to fix type */}
-                <label>Record Creation Timestamp (optional)</label>
-                <input
-                    type="text"
-                    id="add-timestamp"
-                    placeholder=""
-                    value={sighting.recordCreationTimestamp}
-                    onChange={handleTimestampChange}
-                />
             </fieldset>
             <button type="submit">Add Sighting</button>
         </form>

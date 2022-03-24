@@ -21,7 +21,6 @@ function SightingList() {
     const addSighting = (newSighting) => {
         //console.log(newSighting);
         setSighting((sightings) => [...sightings, newSighting]);
-
     }
 
     return (
@@ -29,8 +28,8 @@ function SightingList() {
         <h2> List of Sightings </h2>
         <ul>
             {sighting.map((sighting, index) =>
-                <li key={index}> Individuals ID : {sighting.individuals_id} <br/>
-                {sighting.location} {sighting.is_healthy} {sighting.email}
+                <li key={index}> Individuals ID : {sighting.individualid} <br/>
+                {sighting.location} {sighting.healthy} {sighting.email}
                 </li>)}
         </ul>
         <AddSight addSighting={addSighting} />
