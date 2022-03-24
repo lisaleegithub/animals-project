@@ -75,6 +75,7 @@ const AddSight = (props) => {
     return (
         <form onSubmit={handleSubmit}>
         {/* <form> */}
+        <h2>Add Sightings</h2>
             <fieldset>
                 <label>Date of the Sighting</label>
                 <input
@@ -118,8 +119,8 @@ const AddSight = (props) => {
 
                 <label>Health of the Animal</label>
                 <select value={sighting.healthy} onChange={handleHealthyChange}>
-                    <option value="healthy">Yes</option>
-                    <option value="not healthy">No</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
                 </select>
 
                 <label>Email of Sighter</label>

@@ -40,14 +40,19 @@ function SightingList() {
 
     return (
       <div className="sightings">
-        <h2> List of Sightings </h2>
-        <ul>
-            {sighting.map((sighting, index) =>
-                <li key={index}> Date and Time: {formatDateTime(sighting.datetime)} <br/> 
-                Saw{' '}{sighting.nickname}{' '}at{' '}{sighting.location}{' '}looking{' '}{boolToString(sighting.healthy)}
-                </li>)}
-        </ul>
-        <AddSight />
+        <div className="form-column">
+            <AddSight />
+        </div>
+        <div className="list-column">
+            <h2> List of Sightings </h2>
+            <ul>
+                {sighting.map((sighting, index) =>
+                    <li key={index}> Date{'&'}Time: {formatDateTime(sighting.datetime)} <br/> 
+                    Saw{' '}{sighting.nickname}{' '}at{' '}{sighting.location}{' '}looking{' '}{boolToString(sighting.healthy)}
+                    </li>)}
+            </ul>
+        </div>
+        
       </div>
     );
   }

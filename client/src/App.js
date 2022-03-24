@@ -4,7 +4,7 @@ import SightingList from './components/SightingList';
 function App() {
   return (
     <div className="App">
-      Hello from Techtonica
+      <h1>Endangered Animals Sighting Tracker</h1>
       <SightingList />
     </div>
   );
