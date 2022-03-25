@@ -133,11 +133,11 @@ const SightingForm = (props) => {
                     <label>Health of the Animal</label>
 
                     <label for="healthy">
-                        <input type="radio" id="health" name="healthy" value="true" onChange={handleHealthyChange} />
+                        <input type="radio" id="health" name="healthy" value="true" onChange={handleHealthyChange} required/>
                         Healthy
                     </label>
                     <label for="unhealthy">
-                        <input type="radio" id="health" name="unhealthy" value="false" onChange={handleHealthyChange} />
+                        <input type="radio" id="health" name="healthy" value="false" onChange={handleHealthyChange} />
                         Unhealthy
                     </label>
 
