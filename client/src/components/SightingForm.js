@@ -113,7 +113,7 @@ const SightingForm = (props) => {
                 <label>Individual Seen</label>
                 <IndividualsDropdown handleIndividualidChange={handleIndividualidChange}/>
 
-                <label>Location of Sighting</label>
+                <label>Location of the Sighting</label>
                 <input
                     type="text"
                     id="add-location"
@@ -141,7 +141,7 @@ const SightingForm = (props) => {
                         Unhealthy
                     </label>
 
-                <label>Email of Sighter</label>
+                <label>Email of the Sighter</label>
                 <input
                     type="email"
                     id="add-email"
