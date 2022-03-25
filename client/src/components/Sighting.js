@@ -10,6 +10,7 @@ function Sighting() {
         email: "",
     }]);
 
+    // let testvar = 0;
     useEffect(() => {
         fetch("http://localhost:5005/sightings")
         .then((response) => response.json())
@@ -17,15 +18,16 @@ function Sighting() {
             for (let index in sightings){
                if( index !== "3"){
                 setSightings(sightings);
+                console.log("THIS IS SIGHTINGS!" + JSON.stringify(sightings))
                }
             };       
         })
-        
     }, []);
 
     // to show list of sightings after adding
     const addSighting = (newSighting) => {
         setSightings((sightings) => [...sightings, newSighting]);
+        // return testvar + 1;
     }
 
     // to formate date and time

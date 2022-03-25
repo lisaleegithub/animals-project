@@ -15,23 +15,23 @@ const SightingForm = (props) => {
         // console.log(event);
         const datetime = event.target.value;
         setSighting((sighting) => ({ ...sighting, datetime }));
-        // console.log("handle datetime")
+        console.log("handle datetime")
         console.log(sighting)
     }
 
     const handleIndividualidChange = (event) => {
         // console.log(event);
-        const individualid = event.target.options.selectedIndex;
+        const individualid = event.target.options.selectedIndex + 1;
         setSighting((sighting) => ({ ...sighting, individualid }));
-        // console.log("handle individualid")
+        console.log("handle individualid")
         console.log(sighting)
     }
 
     const handleLocationChange = (event) => {
         const location = event.target.value;
         setSighting((sighting) => ({ ...sighting, location }));
-        // console.log("handle location")
-        // console.log(sighting)
+        console.log("handle location")
+        console.log(sighting)
     }
 
     // const handleHealthyChange = (event) => {
@@ -57,7 +57,6 @@ const SightingForm = (props) => {
     const handleEmailChange = (event) => {
         const email = event.target.value;
         setSighting((sighting) => ({ ...sighting, email }));
-        // console.log("handle email")
         console.log(sighting)
     }
 
@@ -84,10 +83,10 @@ const SightingForm = (props) => {
         //     email: "",
         // }
         e.preventDefault();
-        console.log("current sighting is" + sighting);
+        console.log("current sighting is" + JSON.stringify(sighting));
         setSighting(sighting); // set usestate for the form
         postSighting(sighting); // make the post request to the db
-        // props.addSighting(sighting); // sent the new sighting to the parent
+        props.addSighting(sighting); // sent the new sighting to the parent
         // setSighting(emptySighting); // clear the fields
     };
 
@@ -107,6 +106,7 @@ const SightingForm = (props) => {
                     required
                     value={sighting.datetime}
                     onChange={handleDateTimechange}
+   
                 />
 
                 <label>Individual Seen</label>
@@ -120,6 +120,7 @@ const SightingForm = (props) => {
                     required
                     value={sighting.location}
                     onChange={handleLocationChange}
+  
                 />
 
                 {/* <label>Health of the Animal</label>
@@ -147,6 +148,7 @@ const SightingForm = (props) => {
                     required
                     value={sighting.email}
                     onChange={handleEmailChange}
+   
                 />
 
             </fieldset>
