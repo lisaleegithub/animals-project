@@ -39,8 +39,8 @@ function Sighting() {
     // to show health status (true = healthy, false = not healthy)
     function boolToString(input) {
         if (input === true) {
-            return "healthy";
-        } return "not healthy";
+            return "Looks healthy";
+        } return "Looks Unhealthy";
     }
 
     return (
@@ -50,10 +50,14 @@ function Sighting() {
         </div>
         <div className="list-column">
             <h2> List of Sightings </h2>
-            <ul>
+            <ul className="list-container">
                 {sightings.map((sighting, index) =>
-                    <li key={index}> Date{'&'}Time: {formatDateTime(sighting.datetime)} <br/> 
-                    Saw{' '}{sighting.nickname}{' '}at{' '}{sighting.location}{' '}looking{' '}{boolToString(sighting.healthy)}
+                    <li key={index}> Date{'&'}Time: {formatDateTime(sighting.datetime)}
+                    <ul className="circle">
+                        <li>Individual Seen: {sighting.nickname}</li>
+                        <li>Location: {sighting.location}{' '}</li>
+                        <li>{boolToString(sighting.healthy)}</li><br/>
+                    </ul>
                     </li>)}
             </ul>
         </div>

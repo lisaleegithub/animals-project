@@ -25,14 +25,14 @@ const PhotoCard = () => {
                     <img src="https://files.worldwildlife.org/wwfcmsprod/images/Atlantic_bluefin_tuna_253467_Tuna_Species/hero_small/925cryk2za_Bluefin_tuna_253467.jpg" alt="Elsa" height="150px" />
                 </div>
                 <div className="text">
-                    Elsa, Blufin Tuna
+                    Elsa, Bluefin Tuna
                 </div>
 
                 <div className="photo">
                     <img src="https://europe.oceana.org/sites/default/files/euo/EUO_c_OCEANA_Keith_Ellenbogen_22296.jpg" alt="Olaf" height="150px"  />
                 </div>
                 <div className="text">
-                    Olaf, Blufin Tuna
+                    Olaf, Bluefin Tuna
                 </div>
             </div>
 

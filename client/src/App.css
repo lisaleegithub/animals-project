@@ -9,20 +9,23 @@ form label {
   width: 100%;
   vertical-align: top;
 }
+
 form input, form select {
   display: inline-block;
-  width: 200px;
+  width: 100%;
   margin-top: 10px;
   border-radius: 5px;
   height: 40px;
+  border: none;
 }
 
 button {
   background-color: white; 
   color: black; 
-  border: 2px solid #4CAF50;
+  border: 2px solid #82ae6b;
   padding: 10px;
   margin: 2px;
+  margin-left:100px;
   border-radius: 10px;
 }
 
@@ -40,11 +43,11 @@ body {
   font-family: 'Maven Pro', sans-serif;
 }
 
-ul {
+.list-container {
   text-align: left;
   list-style-position: inside;
   line-height: 30px;
-  border: solid;
+  border: solid #82ae6b;
   border-radius: 10px;
   padding: 10px;
 }
@@ -53,13 +56,24 @@ ul {
   display: flex;
 }
 
-.form-column {
-  width: 300px;
-  margin: 10px;
+form {
+  border: solid #82ae6b;
+  padding: 20px;
+  padding-top: 10px;
+  border-radius: 10px;
 }
 
+.form-column {
+  width: 350px;
+  margin: 10px;
+
+}
+
+fieldset {
+  border: none;
+}
 .list-column {
-  width: 500px;
+  width: 400px;
   margin: 10px;
 }
 
@@ -97,4 +111,9 @@ img:hover {
     display: block;
     font-size: 16px;
     text-align: center;
+ }
+
+ .circle {
+  list-style-type: circle;
+  margin-left: 1em;
  }

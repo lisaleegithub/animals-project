@@ -81,9 +81,12 @@ const SightingForm = (props) => {
     };
 
     return (
+        <>
+        <h2>Add Sightings</h2>
+
         <form onSubmit={handleSubmit}>
         {/* <form> */}
-        <h2>Add Sightings</h2>
+        
             <fieldset>
                 <label>Date and Time of the Sighting</label>
                 <input
@@ -127,6 +130,7 @@ const SightingForm = (props) => {
             </fieldset>
             <button type="submit">Add Sighting</button>
         </form>
+        </>
     );
 };
 
