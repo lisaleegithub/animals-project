@@ -77,8 +77,16 @@ app.post('/sightings', cors(), async (req, res) => {
         // [datetimeseen, "Florida", true, "sighting@sighting.com", 3, creationTime]
         [newSighting.datetime, newSighting.location, newSighting.healthy, newSighting.email, newSighting.individualid, creationTime]
     );
-    console.log(result);
-    res.json(result);
+    if (result.rows[0]) {
+        const nickname = await db.query('SELECT nickname FROM individuals WHERE id=$1',
+        [newSighting.individualid])
+        // console.log("nickname console" + JSON.stringify(nickname.rows[0]));
+        const resObject = { ...result.rows[0], nickname: nickname.rows[0].nickname }
+        res.json(resObject)
+        // console.log("resObject console" + JSON.stringify(resObject));
+    }
+    // console.log(result);
+    // res.json(result.rows[0]);
 });
 
 // console.log that your server is up and running
