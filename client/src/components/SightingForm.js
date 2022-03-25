@@ -6,47 +6,46 @@ const SightingForm = (props) => {
         datetime: "", 
         individualid: "",
         location: "",
-        healthy: "",
+        healthy: false,
         email: "",
     });
 
     //create functions that handle the event of the user typing into the form
     const handleDateTimechange = (event) => {
-        console.log(event);
+        // console.log(event);
         const datetime = event.target.value;
         setSighting((sighting) => ({ ...sighting, datetime }));
-        console.log("handle datetime")
+        // console.log("handle datetime")
         console.log(sighting)
-        console.log("this is props" + props)
     }
 
     const handleIndividualidChange = (event) => {
-        console.log(event);
+        // console.log(event);
         const individualid = event.target.options.selectedIndex;
         setSighting((sighting) => ({ ...sighting, individualid }));
-        console.log("handle individualid")
+        // console.log("handle individualid")
         console.log(sighting)
     }
 
     const handleLocationChange = (event) => {
         const location = event.target.value;
         setSighting((sighting) => ({ ...sighting, location }));
-        console.log("handle location")
-        console.log(sighting)
+        // console.log("handle location")
+        // console.log(sighting)
     }
 
     const handleHealthyChange = (event) => {
-        console.log(event);
+        // console.log(event);
         const healthy = event.target.options.selectedIndex;
         setSighting((sighting) => ({ ...sighting, healthy }));
-        console.log("handle healthy")
+        // console.log("handle healthy")
         console.log(sighting)
     }
 
     const handleEmailChange = (event) => {
         const email = event.target.value;
         setSighting((sighting) => ({ ...sighting, email }));
-        console.log("handle email")
+        // console.log("handle email")
         console.log(sighting)
     }
 

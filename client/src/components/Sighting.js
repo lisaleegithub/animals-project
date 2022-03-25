@@ -52,11 +52,12 @@ function Sighting() {
             <h2> List of Sightings </h2>
             <ul className="list-container">
                 {sightings.map((sighting, index) =>
-                    <li key={index}> Date{'&'}Time: {formatDateTime(sighting.datetime)}
+                    <li key={index}> <a href="mailto: {sighting.email}"><strong>Contact</strong> </a> for more sighting info
                     <ul className="circle">
-                        <li>Individual Seen: {sighting.nickname}</li>
-                        <li>Location: {sighting.location}{' '}</li>
-                        <li>{boolToString(sighting.healthy)}</li><br/>
+                        <li><strong>Individual</strong>: {sighting.nickname}</li>
+                        <li><strong>Date{'&'}Time</strong>: {formatDateTime(sighting.datetime)}</li>
+                        <li><strong>Location</strong>: {sighting.location}{' '}</li>
+                        <li><strong>Health Status</strong>: {boolToString(sighting.healthy)}</li>
                     </ul>
                     </li>)}
             </ul>

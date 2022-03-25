@@ -117,3 +117,8 @@ img:hover {
   list-style-type: circle;
   margin-left: 1em;
  }
+
+ a {
+   text-decoration: none;
+   color: #266d85;
+ }
