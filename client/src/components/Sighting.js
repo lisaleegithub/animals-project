@@ -18,7 +18,7 @@ function Sighting() {
             for (let index in sightings){
                if( index !== "3"){
                 setSightings(sightings);
-                console.log("THIS IS SIGHTINGS!" + JSON.stringify(sightings))
+                // console.log("THIS IS SIGHTINGS!" + JSON.stringify(sightings))
                }
             };       
         })
@@ -38,12 +38,14 @@ function Sighting() {
         return formattedDate + " " + formattedTime;
     }
 
-    // // to show health status (true = healthy, false = not healthy)
-    // function boolToString(input) {
-    //     if (input === "true") {
-    //         return "Looks healthy";
-    //     } return "Looks Unhealthy";
-    // }
+    // to show health status (true = healthy, false = not healthy)
+    function boolToString(input) {
+        if (input === true) {
+            return "Looks healthy";
+        } else {
+        return "Looks Unhealthy";
+        }
+    }
 
     return (
       <div className="sightings">
@@ -59,7 +61,7 @@ function Sighting() {
                         <li><strong>Individual</strong>: {sighting.nickname}</li>
                         <li><strong>Date{'&'}Time</strong>: {formatDateTime(sighting.datetime)}</li>
                         <li><strong>Location</strong>: {sighting.location}{' '}</li>
-                        <li><strong>Health Status</strong>: {(sighting.healthy)}</li>
+                        <li><strong>Health Status</strong>: {boolToString(sighting.healthy)}</li>
                     </ul>
                     </li>)}
             </ul>

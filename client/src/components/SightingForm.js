@@ -41,15 +41,16 @@ const SightingForm = (props) => {
     //     // console.log("handle healthy")
     //     console.log(sighting)
     // }
-    function strToBool(input) {
-        if (input === "true") {
-          return true;
-        }
-        return false;
-    }
+
+    // function strToBool(input) {
+    //     if (input === "true") {
+    //       return true;
+    //     }
+    //     return false;
+    // }
 
     const handleHealthyChange = (event) => {
-        const healthy = strToBool(event.target.value);
+        const healthy = event.target.value;
         setSighting((sighting) => ({ ...sighting, healthy }));
         console.log(sighting);
       };
@@ -69,7 +70,7 @@ const SightingForm = (props) => {
       }).then((response) => {
           return response.json()
       }).then((data) => {
-        console.log("From the post ", data);
+        // console.log("From the post ", data);
         props.addSighting(data);
     });
     }
