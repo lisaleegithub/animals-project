@@ -6,7 +6,7 @@ const SightingForm = (props) => {
         datetime: "", 
         individualid: "",
         location: "",
-        healthy: false,
+        healthy: "",
         email: "",
     });
 
@@ -34,13 +34,25 @@ const SightingForm = (props) => {
         // console.log(sighting)
     }
 
-    const handleHealthyChange = (event) => {
-        // console.log(event);
-        const healthy = event.target.options.selectedIndex;
-        setSighting((sighting) => ({ ...sighting, healthy }));
-        // console.log("handle healthy")
-        console.log(sighting)
+    // const handleHealthyChange = (event) => {
+    //     // console.log(event);
+    //     const healthy = event.target.options.selectedIndex;
+    //     setSighting((sighting) => ({ ...sighting, healthy }));
+    //     // console.log("handle healthy")
+    //     console.log(sighting)
+    // }
+    function strToBool(input) {
+        if (input === "true") {
+          return true;
+        }
+        return false;
     }
+
+    const handleHealthyChange = (event) => {
+        const healthy = strToBool(event.target.value);
+        setSighting((sighting) => ({ ...sighting, healthy }));
+        console.log(sighting);
+      };
 
     const handleEmailChange = (event) => {
         const email = event.target.value;
@@ -110,11 +122,22 @@ const SightingForm = (props) => {
                     onChange={handleLocationChange}
                 />
 
-                <label>Health of the Animal</label>
+                {/* <label>Health of the Animal</label>
                 <select value={sighting.healthy} onChange={handleHealthyChange}>
-                    <option value="false">No</option>
-                    <option value="true">Yes</option>
-                </select>
+                    <option value="false">False</option>
+                    <option value="true">True</option>
+                </select> */}
+
+                    <label>Health of the Animal</label>
+
+                    <label for="healthy">
+                        <input type="radio" id="health" name="healthy" value="true" onChange={handleHealthyChange} />
+                        Healthy
+                    </label>
+                    <label for="unhealthy">
+                        <input type="radio" id="health" name="unhealthy" value="false" onChange={handleHealthyChange} />
+                        Unhealthy
+                    </label>
 
                 <label>Email of Sighter</label>
                 <input

@@ -122,3 +122,9 @@ img:hover {
    text-decoration: none;
    color: #266d85;
  }
+
+ input[type=radio] {
+  border: 0px;
+  width: 20%;
+  height: 1em;
+}
