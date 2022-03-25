@@ -50,7 +50,8 @@ app.get('/individuals', cors(), async (req, res) => {
 // GET request for JOINed tables (individuals and sightings)
 app.get('/sightings', cors(), async (req, res) => {
     try{
-        const { rows: sightings } = await db.query('SELECT individuals.nickname, sightings.datetime, sightings.location, sightings.healthy FROM individuals INNER JOIN sightings ON individuals.id = sightings.individualid');
+        // const { rows: sightings } = await db.query('SELECT individuals.nickname, sightings.datetime, sightings.location, sightings.healthy FROM individuals INNER JOIN sightings ON individuals.id = sightings.individualid');
+        const { rows: sightings } = await db.query ('SELECT nickname, sightings.datetime, sightings.location, sightings.healthy, sightings.email, species.common_name, species.scientific_name, species.status_code FROM sightings INNER JOIN individuals ON individuals.id = sightings.individualid INNER JOIN species ON species.id = individuals.specieid');
         res.send(sightings);
     } catch (e){
         return res.status(400).json({e});
