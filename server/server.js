@@ -59,25 +59,22 @@ app.get('/sightings', cors(), async (req, res) => {
 
 
 // POST request for sightings list
-// need to find out how to combine date & time
 app.post('/sightings', cors(), async (req, res) => {
     const newSighting = { 
-        date: req.body.date, 
-        time: req.body.time, 
+        datetime: req.body.datetime, 
         location: req.body.location, 
         healthy: req.body.healthy, 
         email: req.body.email, 
-        individualid: req.body.individualsId
+        individualid: req.body.individualid
     }
-
-    const datetime = new Date().toISOString();
+    // console.log(newSighting);
+    // const datetimeseen = new Date().toISOString();
     const creationTime = new Date().toISOString();
     const result = await db.query(
         // INSERT INTO needs to match db
-        // individuals_id should be individual_id ideally
-        'INSERT INTO sightings (date_time, location, healthy, email, individualid, record_creation_timestamp) VALUES($1, $2, $3, $4, $5, $6) RETURNING *',
-        // [datetime, "California", true, "sighting@sighting.com", 1, creationTime]
-        [datetime, newSighting.location, newSighting.healthy, newSighting.email, newSighting.individualid, creationTime]
+        'INSERT INTO sightings (datetime, location, healthy, email, individualid, record_creation_timestamp) VALUES($1, $2, $3, $4, $5, $6) RETURNING *',
+        // [datetimeseen, "Florida", true, "sighting@sighting.com", 3, creationTime]
+        [newSighting.datetime, newSighting.location, newSighting.healthy, newSighting.email, newSighting.individualid, creationTime]
     );
     console.log(result);
     res.json(result);
