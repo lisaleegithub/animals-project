@@ -1,24 +1,19 @@
 import { useState } from "react";
+import IndividualsDropdown from "./IndividualsDropdown";
 
 const SightingForm = (props) => {
     const [sighting, setSighting] = useState({
-        date: "", //date
-        time: "", //time
-        individualid: "", //string - dropdown?
-        location: "", // string or num format
-        healthy: "", //boolean but not
-        email: "", //email format
+        datetime: "", 
+        individualid: "",
+        location: "",
+        healthy: "",
+        email: "",
     });
 
     //create functions that handle the event of the user typing into the form
-    const handleDateChange = (event) => {
-        const date = event.target.value;
-        setSighting((sighting) => ({ ...sighting, date }));
-    }
-
-    const handleTimeChange = (event) => {
-        const time = event.target.value;
-        setSighting((sighting) => ({ ...sighting, time }));
+    const handleDateTimechange = (event) => {
+        const datetime = event.target.value;
+        setSighting((sighting) => ({ ...sighting, datetime }));
     }
 
     const handleIndividualidChange = (event) => {
@@ -43,7 +38,7 @@ const SightingForm = (props) => {
 
     //A function to handle the post request
     const postSighting = (newSighting) => {
-        return fetch('http://localhost:5005/animals', {
+        return fetch('http://localhost:5005/sightings', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'}, 
         body: JSON.stringify(newSighting)
@@ -51,23 +46,22 @@ const SightingForm = (props) => {
           return response.json()
       }).then((data) => {
         console.log("From the post ", data);
-        props.AddSight(data);
+        props.addSighting(data);
     });
     }
 
     const handleSubmit = (e) => {
         let emptySighting = {
-            date: "", //date
-            time: "", //time
-            individualid: "", //string - dropdown?
-            location: "", // string or num format
-            healthy: "", //boolean but not
-            email: "", //email format
+            datetime: "",
+            individualid: "",
+            location: "", 
+            healthy: "", 
+            email: "",
         }
         e.preventDefault();
         setSighting(sighting); // set usestate for the form
         postSighting(sighting); // make the post request to the db
-        props.AddSight(sighting); // sent the new sighting to the parent
+        // props.addSighting(sighting); // sent the new sighting to the parent
         setSighting(emptySighting); // clear the fields
         
     };
@@ -77,35 +71,18 @@ const SightingForm = (props) => {
         {/* <form> */}
         <h2>Add Sightings</h2>
             <fieldset>
-                <label>Date of the Sighting</label>
+                <label>Date and Time of the Sighting</label>
                 <input
-                    type="date"
-                    id="add-date"
+                    type="datetime-local"
+                    id="add-date-time"
                     // placeholder="Date"
                     required
-                    value={sighting.date}
-                    onChange={handleDateChange}
-                />
-
-                <label>Time of the Sighting</label>
-                <input
-                    type="time"
-                    id="add-time"
-                    // placeholder="Time"
-                    required
-                    value={sighting.time}
-                    onChange={handleTimeChange}
+                    value={sighting.datetime}
+                    onChange={handleDateTimechange}
                 />
 
                 <label>Individual Seen</label>
-                <select value={sighting.individualid} required onChange={handleIndividualidChange}>
-                    <option value="individualid1">1</option>
-                    <option value="individualid2">2</option>
-                    <option value="individualid3">3</option>
-                    <option value="individualid4">4</option>
-                    <option value="individualid5">5</option>
-                    <option value="individualid6">6</option>
-                </select>
+                <IndividualsDropdown handleIndividualidChange={handleIndividualidChange}/>
 
                 <label>Location of Sighting</label>
                 <input
