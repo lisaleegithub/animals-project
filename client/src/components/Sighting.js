@@ -2,7 +2,13 @@ import { useState, useEffect } from "react";
 import SightingForm from "./SightingForm";
 
 function Sighting() {
-    const [sightings, setSightings] = useState([]);
+    const [sightings, setSightings] = useState([{
+        datetime: "", 
+        individualid: "",
+        location: "",
+        healthy: "",
+        email: "",
+    }]);
 
     useEffect(() => {
         fetch("http://localhost:5005/sightings")
@@ -40,7 +46,7 @@ function Sighting() {
     return (
       <div className="sightings">
         <div className="form-column">
-            <SightingForm AddSight={addSighting}/>
+            <SightingForm addSighting={addSighting}/>
         </div>
         <div className="list-column">
             <h2> List of Sightings </h2>

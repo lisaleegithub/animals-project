@@ -13,7 +13,7 @@ const IndividualsDropdown = (prop) => {
 
   return (
     <div>
-      <select onChange={prop.handleIndividual} required>
+      <select onChange={prop.handleIndividualidChange} required>
         {individuals.map((individual) => (
           <option value={individual.id} key={individual.id}>
             {individual.nickname}

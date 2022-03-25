@@ -12,28 +12,42 @@ const SightingForm = (props) => {
 
     //create functions that handle the event of the user typing into the form
     const handleDateTimechange = (event) => {
+        console.log(event);
         const datetime = event.target.value;
         setSighting((sighting) => ({ ...sighting, datetime }));
+        console.log("handle datetime")
+        console.log(sighting)
+        console.log("this is props" + props)
     }
 
     const handleIndividualidChange = (event) => {
-        const individualid = event.target.value;
+        console.log(event);
+        const individualid = event.target.options.selectedIndex;
         setSighting((sighting) => ({ ...sighting, individualid }));
+        console.log("handle individualid")
+        console.log(sighting)
     }
 
     const handleLocationChange = (event) => {
         const location = event.target.value;
         setSighting((sighting) => ({ ...sighting, location }));
+        console.log("handle location")
+        console.log(sighting)
     }
 
     const handleHealthyChange = (event) => {
-        const healthy = event.target.value;
+        console.log(event);
+        const healthy = event.target.options.selectedIndex;
         setSighting((sighting) => ({ ...sighting, healthy }));
+        console.log("handle healthy")
+        console.log(sighting)
     }
 
     const handleEmailChange = (event) => {
         const email = event.target.value;
         setSighting((sighting) => ({ ...sighting, email }));
+        console.log("handle email")
+        console.log(sighting)
     }
 
     //A function to handle the post request
@@ -49,21 +63,21 @@ const SightingForm = (props) => {
         props.addSighting(data);
     });
     }
-
+ 
     const handleSubmit = (e) => {
-        let emptySighting = {
-            datetime: "",
-            individualid: "",
-            location: "", 
-            healthy: "", 
-            email: "",
-        }
+        // let emptySighting = {
+        //     datetime: "",
+        //     individualid: "",
+        //     location: "", 
+        //     healthy: true, 
+        //     email: "",
+        // }
         e.preventDefault();
+        console.log("current sighting is" + sighting);
         setSighting(sighting); // set usestate for the form
         postSighting(sighting); // make the post request to the db
         // props.addSighting(sighting); // sent the new sighting to the parent
-        setSighting(emptySighting); // clear the fields
-        
+        // setSighting(emptySighting); // clear the fields
     };
 
     return (
@@ -96,8 +110,8 @@ const SightingForm = (props) => {
 
                 <label>Health of the Animal</label>
                 <select value={sighting.healthy} onChange={handleHealthyChange}>
-                    <option value="true">Yes</option>
                     <option value="false">No</option>
+                    <option value="true">Yes</option>
                 </select>
 
                 <label>Email of Sighter</label>
