@@ -13,7 +13,24 @@ form input, form select {
   display: inline-block;
   width: 200px;
   margin-top: 10px;
+  border-radius: 5px;
+  height: 40px;
 }
+
+button {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+  padding: 10px;
+  margin: 2px;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
 
 h1 {
   font-family: 'Archivo Black', sans-serif;
@@ -28,6 +45,7 @@ ul {
   list-style-position: inside;
   line-height: 30px;
   border: solid;
+  border-radius: 10px;
   padding: 10px;
 }
 
