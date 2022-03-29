@@ -15,12 +15,12 @@ function Sighting() {
         fetch("http://localhost:5005/sightings")
         .then((response) => response.json())
         .then(sightings =>{
-            for (let index in sightings){
-               if( index !== "3"){
+            // for (let index in sightings){
+            //    if( index !== "3"){
                 setSightings(sightings);
                 // console.log("THIS IS SIGHTINGS!" + JSON.stringify(sightings))
-               }
-            };       
+            //    }
+            // };       
         })
     }, []);
 

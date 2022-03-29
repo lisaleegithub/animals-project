@@ -87,7 +87,7 @@ const SightingForm = (props) => {
         console.log("current sighting is" + JSON.stringify(sighting));
         setSighting(sighting); // set usestate for the form
         postSighting(sighting); // make the post request to the db
-        props.addSighting(sighting); // sent the new sighting to the parent
+        // props.addSighting(sighting); // sent the new sighting to the parent
         // setSighting(emptySighting); // clear the fields
     };
 
